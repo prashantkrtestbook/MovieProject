@@ -1,0 +1,29 @@
+<div >
+  <div>
+        <app-header></app-header>
+  </div>
+
+  
+
+  <app-search (getResChildPar)="getResChildPar($event)"></app-search>
+
+  <app-groupcard *ngIf="totalLength" [cardDatas]="resData" [page]="pageNo" [totalLength]="totalLength" [movieName]="searchquery"></app-groupcard>
+  
+
+   
+
+
+<div>
+  <!-- resData:{{resData}} -->
+  <app-pagination *ngIf="totalLength" ></app-pagination>
+</div>
+
+<router-outlet></router-outlet>
+
+  <div class="appfooter">
+        <app-footer></app-footer>
+  </div>
+  
+
+ 
+</div>

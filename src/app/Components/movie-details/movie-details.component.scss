@@ -1,0 +1,55 @@
+
+$base-color: #444142;
+$fornt-color:rgb(44, 37, 37);
+$back-color:rgb(11, 115, 129);
+
+.movie-card{
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: 100%, 100%;
+
+}
+.container{
+    opacity: 0.9;
+    background-color: $back-color;
+    height: 100vh;
+  
+}
+.hero{
+    margin: 10px;
+    padding: 10px;
+    color: $fornt-color;
+    text-align: center;
+    background-color: rgb(177, 168, 168);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.cover{
+
+    height:350px;
+    width:250px;
+    margin:10px;
+    border-radius: 20px;
+    background-size: 250px, 350px;
+    background-repeat: no-repeat;
+}
+.column2{
+display: flex;
+flex-wrap: wrap;
+   
+}
+.tag{
+    text-align: center;
+    margin: 2px;
+    padding: 5px;
+    list-style: none;
+background-color:rgb(177, 168, 168);
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.column3{
+    margin: 10px;
+    padding: 15px;
+    background-color: rgb(177, 168, 168);
+}

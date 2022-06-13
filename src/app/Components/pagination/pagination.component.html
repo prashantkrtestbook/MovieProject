@@ -1,0 +1,26 @@
+<div>
+    <div class="container">
+        <div class="text-center">
+        
+
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(1)"  [routerLink]="['/searchquery',this.pager.currentPage,searchValue]">First</a>
+                    
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(pager.currentPage - 1)" [routerLink]="['/searchquery',this.pager.currentPage,searchValue]"> << </a>
+                </li>
+                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" >
+                    <a (click)="setPage(page)" [routerLink]="['/searchquery',this.pager.currentPage,searchValue]">{{page}}</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.currentPage + 1)" [routerLink]="['/searchquery',pager.currentPage,searchValue]"> >> </a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.totalPages)" [routerLink]="['/searchquery',pager.currentPage,searchValue]">Last</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

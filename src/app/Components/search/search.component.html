@@ -1,0 +1,9 @@
+<div class="search">
+    
+<input type="text"   class="searchbox"  #searchbox placeholder="Enter Movie Name" value="Batman"/>
+<a [routerLink]="['/searchquery',pageNo,movieName]">
+    <button  (click)="clickEvent(searchbox.value)" class="searchbtn" >
+        Search
+    </button>
+    </a>
+</div>

@@ -1,0 +1,30 @@
+<div class="movie-card" [ngStyle]="{'background-image': getUrl()}">
+
+    <div class="container" >
+        <div class="hero">
+            <div class="title1">{{Title}}</div>
+        </div>
+        <div>
+       
+        <div class="cover class1" [ngStyle]="{'background-image': getUrl()}"></div>
+
+            <div class="column2">
+                <li class="tag">{{Runtime}}</li>
+                <li class="tag">{{Released}}</li>
+                <li class="tag">{{imdbRating}}</li>
+                <li class="tag">{{Type}}</li>
+                <li class="tag">{{Year}}</li>
+                <li class="tag">{{imdbVotes}}</li>
+                <li class="tag">{{Actors}}</li>
+                <li class="tag">{{BoxOffice}}</li>
+                <li class="tag">{{Country}}</li>
+                <li class="tag">{{Director}}</li>
+                <li class="tag">{{Genre}}</li>
+                <li class="tag">{{Language}}</li>
+                <li class="tag">{{Writer}}</li> 
+            </div>
+
+            <div class="column3"> {{Plot}} </div>
+        </div>
+    </div> 
+</div> 

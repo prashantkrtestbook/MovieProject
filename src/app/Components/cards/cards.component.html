@@ -1,0 +1,29 @@
+<div class="container" >
+    <div class="cellphone-container">
+        <div class="movie">
+            <div class="movie-img" style="background-image: url({{res.Poster}})"></div>
+            <div class="text-movie-cont">
+                <div class="mr-grid">
+                    <div class="col1">
+                        <h5>{{res.Title}}</h5>
+                        <ul class="movie-gen">
+                            <li>{{res.Runtime}} </li>
+                        </ul>
+                    </div>
+                </div>
+                <a [routerLink]= "['/moviedetails',res.imdbID]">
+                <div class="mr-grid action-row" >
+                    <div class="col2">
+                        <div class="watch-btn"  >
+                            <h5>Movie Details</h5>
+                        </div>
+                    </div>
+
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+  
+</div>
