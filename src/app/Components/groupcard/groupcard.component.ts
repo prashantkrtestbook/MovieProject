@@ -15,6 +15,14 @@ export class GroupcardComponent implements OnInit {
 
   pager: any =[];
   pagedItems: any;
+
+
+  filterChange(year:any) {
+    
+  }
+
+
+
  constructor(private apicall: ApicallService,private _Activatedroute: ActivatedRoute) { }
    
   ngOnInit(): void {
