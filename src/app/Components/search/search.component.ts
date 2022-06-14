@@ -1,5 +1,4 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
-import { ApicallService } from '../../apicall.service';
 
 @Component({
   selector: 'app-search',
@@ -8,23 +7,21 @@ import { ApicallService } from '../../apicall.service';
 })
 export class SearchComponent implements OnInit  {
 
-  pageNo: any= 1;
-  movieName: any = "Batman";
+  pageNo: any;
+  movieName: any = "";
 
-  constructor(private apicall: ApicallService) { }
-  
-  @Output() getResChildPar: EventEmitter<any> = new EventEmitter();
-
-  clickEvent(movieName?:any,pageNo?:any) {
-    this.apicall.getData(movieName,pageNo).subscribe(res => {
-      let response = res;
-      this.getResChildPar.emit({ response, movieName, pageNo });
-      
-    })
+  clickEvent(movieName?: any, pageNo: any = 1) {
+    if (movieName) {
+      this.pageNo = pageNo;
+      this.movieName = movieName;
+    }
+    else {
+      this.pageNo = "";
+      this.movieName = "";
+    }
   }
   
-  
   ngOnInit(): void{
-    this.clickEvent(this.movieName,this.pageNo);
+    
   }
 }
