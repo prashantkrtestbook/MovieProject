@@ -1,57 +1,56 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApicallService } from '../../apicall.service';
-// import { SearchComponent } from '../search/search.component';
+
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-
-  
-  
   
 export class PaginationComponent implements OnInit {
 
-
-
-  @Input() cardDatas: any;
-  @Input() page: any;
-  @Input() totalLength: any;
-  @Input() movieName: string = "";
-
-   constructor(private apicall: ApicallService) { }
+  constructor(private apicall: ApicallService,private _Activatedroute: ActivatedRoute) { }
   
-  // @Output() getResChildPar: EventEmitter<any> = new EventEmitter();
-
-
-  @Output() getpageres: EventEmitter<any> = new EventEmitter();
-    allItems: any;
-    pager: any =[];
-    pagedItems: any;
-
-    ngOnInit() {
-      this.allItems = this.cardDatas;
-      this.setPage(1);
-    }
+  pageNo: any;
+  searchItems: any;
+  searchValue: any;
+  totalLength: any;
+  pager: any =[];
+  pagedItems: any;
   
-  
-  setPage(page: number) {
-      this.pager = this.getPager(this.totalLength, page);
-    this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    // console.log(this.pager)
-
-
-    this.apicall.getData(this.movieName,this.pager.currentPage).subscribe(res => {
-      let response = res;
-
-      this.getpageres.emit(response);
-      // console.log(response)
+  ngOnInit() {
+    this._Activatedroute.paramMap.subscribe(params => {
+      let res = params;
+      this.pageNo = res.get('pageNo');
+      this.searchValue = res.get('searchValue');
+      this.updateAPI(this.pageNo, this.searchValue)
     })
-
-    }
   
+    // updateURL() {
+    
+    // }
+  }
+  updateAPI(pageNo:any,searchValue:any) {
+    this.apicall.getData(searchValue,pageNo).subscribe(res => {
+    let response = res;
+      this.setValue(response);
+    })
+  }
+  setValue(data: any) {
+    this.searchItems = data.Search;
+    this.totalLength = data.totalResults;
+      this.setPage(this.pageNo);
+    console.log(data);
+  }
   
+  setPage(pageNo: number) {
+    this.pager = this.getPager(this.totalLength, pageNo);
+    this.pagedItems = this.searchItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    
+    console.log(this.pager.currentPage,pageNo);
+  }
   
   getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
         let totalPages = Math.ceil(totalItems / pageSize);

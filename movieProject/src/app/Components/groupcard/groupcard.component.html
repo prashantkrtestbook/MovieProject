@@ -1,11 +1,45 @@
 <div  class="groupcard" >
-    <div class="subgroupcard" *ngFor="let cardData of cardDatas | paginate: { itemsPerPage: 2, currentPage: page,totalItems:totalLength }">
-        <app-cards [res]="cardData" [page]="page"></app-cards>
+    <div class="subgroupcard" *ngFor="let cardData of cardDatas">
+        <app-cards [res]="cardData" [page]="pageNo"></app-cards>
     </div>
-    
-</div>
-<!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+    </div>
 
-<!-- <div>
-    <app-pagination [cardDatas]="cardDatas" [totalLength]="totalLength" [page]="page" [movieName]="movieName" (getpageres)="setpageres($event)"></app-pagination>
-</div> -->
+    
+        <!-- <app-pagination *ngIf="movieName" ></app-pagination> -->
+
+        <div *ngIf="cardDatas">
+            <div class="container">
+                <div class="text-center">
+        
+        
+                    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                        <li [ngClass]="{disabled:pager.currentPage === 1}">
+                            <a (click)="setPage(1)" [routerLink]="['/searchquery',1,movieName]">First</a>
+        
+                        </li>
+                        <li [ngClass]="{disabled:pager.currentPage === 1}">
+                            <a (click)="setPage(pager.currentPage - 1)"
+                                [routerLink]="['/searchquery',this.pager.currentPage - 1,movieName]">
+                                << </a>
+                        </li>
+                        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                            <a (click)="setPage(page)"
+                                [routerLink]="['/searchquery',page,movieName]">{{page}}</a>
+                        </li>
+                        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                            <a (click)="setPage(pager.currentPage + 1)"
+                                [routerLink]="['/searchquery',pager.currentPage+1,movieName]"> >> </a>
+                        </li>
+                        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                            <a (click)="setPage(pager.totalPages)"
+                                [routerLink]="['/searchquery',pager.totalPages,movieName]">Last</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+
+
+
+

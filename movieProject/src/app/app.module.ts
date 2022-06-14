@@ -16,6 +16,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { MovieDetailsComponent } from './Components/movie-details/movie-details.component';
 import { PaginationComponent } from './Components/pagination/pagination.component';
 import { PagenotfoundComponent } from './Components/pagenotfound/pagenotfound.component';
+import { CombinedComponent } from './Components/combined/combined.component';
 
 
 
@@ -29,7 +30,8 @@ import { PagenotfoundComponent } from './Components/pagenotfound/pagenotfound.co
     GroupcardComponent,
     MovieDetailsComponent,
     PaginationComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    CombinedComponent
   ],
   imports: [
     BrowserModule,

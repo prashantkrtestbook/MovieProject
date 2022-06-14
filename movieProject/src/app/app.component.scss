@@ -1,4 +1,21 @@
-.appfooter{
-    display: block;
-    margin-top: 65vh;
+.app{
+
+}
+.app-header{
+position: sticky;
+margin: 0;
+top: 0;
+left: 0;
+right: 0;
+}
+.app-combined{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.app-footer{
+position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+   
 }

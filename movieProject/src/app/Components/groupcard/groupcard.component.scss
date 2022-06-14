@@ -10,3 +10,33 @@
 .subgroupcard{
    width: max-content;
 }
+
+.container{
+    text-align: center;
+}
+.text-center{
+    text-align: center;
+}
+.pagination {
+    border: 2px solid black;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.pagination>li>a {
+    flex: space-around;
+    text-decoration: none;
+    padding: 10px;
+
+   
+}
+.pagination>li:hover>a {
+background-color: rgb(11, 115, 129);
+    color: white;
+}
+
+.activepage {
+    background-color: rgb(182, 10, 10);
+    color: white;
+}

@@ -1,4 +1,5 @@
 <div class="container" >
+    <a [routerLink]="['/moviedetails',res.imdbID]">
     <div class="cellphone-container">
         <div class="movie">
             <div class="movie-img" style="background-image: url({{res.Poster}})"></div>
@@ -11,7 +12,7 @@
                         </ul>
                     </div>
                 </div>
-                <a routerLink= "{{ page + '/' + res.imdbID}}">
+                
                 <div class="mr-grid action-row" >
                     <div class="col2">
                         <div class="watch-btn"  >
@@ -20,9 +21,10 @@
                     </div>
 
                 </div>
-                </a>
+               
             </div>
         </div>
     </div>
-    
+    </a>
+  
 </div>

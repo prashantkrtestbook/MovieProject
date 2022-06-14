@@ -9,14 +9,25 @@ import { ApicallService } from '../../apicall.service';
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss']
 })
-export class CardsComponent {
+export class CardsComponent implements OnInit{
+
   constructor(private apicall: ApicallService) { }
 
-  // @Output() getMovieDetails: EventEmitter<any> = new EventEmitter();
-  title = 'movie Project';
-  
   @Input() res: any;
   @Input() page: any;
+
+  title = 'movie Project';
+  
+  ngOnInit(): void {
+    // console.log(this.res)
+  }
+
+  // @Output() getMovieDetails: EventEmitter<any> = new EventEmitter();
+  
+  
+ 
+
+
 
   // movieData: MovieDetailsComponent;
   
