@@ -1,0 +1,11 @@
+<div  class="groupcard" >
+    <div class="subgroupcard" *ngFor="let cardData of cardDatas | paginate: { itemsPerPage: 2, currentPage: page,totalItems:totalLength }">
+        <app-cards [res]="cardData" [page]="page"></app-cards>
+    </div>
+    
+</div>
+<!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+
+<!-- <div>
+    <app-pagination [cardDatas]="cardDatas" [totalLength]="totalLength" [page]="page" [movieName]="movieName" (getpageres)="setpageres($event)"></app-pagination>
+</div> -->
