@@ -12,19 +12,27 @@ export class GroupcardComponent implements OnInit {
   pageNo: any;
   totalLength: any;
   movieName: any;
+  
+  year1: any;
+  yearCheck1: boolean = true;
+  
+  year2: any;
+  yearCheck2: boolean=true;
 
   pager: any =[];
   pagedItems: any;
 
 
-  filterChange(year:any) {
-    
-  }
+  
 
 
 
  constructor(private apicall: ApicallService,private _Activatedroute: ActivatedRoute) { }
    
+  
+  
+  
+  
   ngOnInit(): void {
     this._Activatedroute.paramMap.subscribe(params => {
       let res = params;
@@ -33,11 +41,14 @@ export class GroupcardComponent implements OnInit {
       this.updateAPI(this.pageNo, this.movieName)
    })
   }
+
+
    updateAPI(pageNo:any,searchValue:any) {
-    this.apicall.getData(searchValue,pageNo).subscribe(res => {
+    this.apicall.getData(searchValue,pageNo).subscribe((res:any) => {
       let response = res;
-      this.setValue(response)
-      
+      if (res && res.Response === 'True') {
+        this.setValue(response) 
+      }
     })
    }
   
@@ -94,6 +105,44 @@ export class GroupcardComponent implements OnInit {
         };
    }
 
+  
+  
+  filterChange1(event: any, year: any) {
+  
+  const pattern = /[0-9]/;
+  const inputChar = String.fromCharCode(event.charCode);
+  let lIsTooLong: boolean = event.target.value.length > 3
+  if (!pattern.test(inputChar) ||  lIsTooLong || event.target.value.length<0) {
+    // invalid character, prevent input
+    event.preventDefault();
+    } 
+    
+    if (event.target.value.length == 4) {
+      this.year1 = year;
+      this.yearCheck1 = false;
+    }
+    
+  }
+  
 
+
+
+
+  filterChange2(event: any, year: any) {
+  
+  const pattern = /[0-9]/;
+  const inputChar = String.fromCharCode(event.charCode);
+  let lIsTooLong: boolean = event.target.value.length > 3
+  if (!pattern.test(inputChar) ||  lIsTooLong || event.target.value.length<0) {
+    // invalid character, prevent input
+    event.preventDefault();
+    } 
+    
+    if (event.target.value.length == 4) {
+      this.year2 = year;
+      this.yearCheck2 = false;
+    }
+    
+}
 
 }

@@ -1,13 +1,21 @@
 
-<!-- <div>
-    <input type="text" (onKey)="filterChange($event)" placeholder="year" #filteryear /> 
+<div class="yearFilter">
    
-</div> -->
+
+    <span #yearFilterSapn><b>Filter:</b></span>
+    <input  type="number"   placeholder="Min Year" inputmode="numeric" pattern="^\S[0-9]+$" #yearid1 max="4"
+        (keypress)="filterChange1($event,yearid1.value)"  class="filterbox">
+    
+    <input type="number" placeholder="Max Year" inputmode="numeric" pattern="^\S[0-9]+$" #yearid2 max="4"
+        (keypress)="filterChange2($event,yearid2.value)" class="filterbox">
+
+   
+</div>
 
 
 <div  class="groupcard"  >    
     <div class="subgroupcard" *ngFor="let cardData of cardDatas">
-        <app-cards [res]="cardData" [page]="pageNo"></app-cards>
+        <app-cards *ngIf="(year1<=cardData.Year || yearCheck1)&&(year2>=cardData.Year || yearCheck2)"   [res]="cardData" [page]="pageNo"></app-cards>
     </div>
     </div>
 
