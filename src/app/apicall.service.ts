@@ -12,11 +12,11 @@ export class ApicallService {
   getData(movieName: any, pageNo?: 1) {
   console.log(movieName,pageNo)
     let url = `https://www.omdbapi.com/?s=${movieName}&page=${pageNo}&apikey=${this.APIKEY}`;
-    return this.https.get(url);
+    return this.http.get(url);
   }
   getMovieDetails(movieId?: any) {
     let url = `https://www.omdbapi.com/?i=${movieId}&apikey=${this.APIKEY}`;
-    return this.https.get(url);
+    return this.http.get(url);
   }
   // getDataaccordindtopage(movieName: any,pageNo:any) {
   //   let url = `http://www.omdbapi.com/?s=${movieName}&page=${pageNo}&apikey=${this.APIKEY}`;
