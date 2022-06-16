@@ -22,23 +22,19 @@ export class GroupcardComponent implements OnInit {
   pager: any =[];
   pagedItems: any;
 
-
-  
-
-
+  movieNotFound: boolean = false;
 
  constructor(private apicall: ApicallService,private _Activatedroute: ActivatedRoute) { }
-   
-  
-  
-  
   
   ngOnInit(): void {
     this._Activatedroute.paramMap.subscribe(params => {
       let res = params;
       this.pageNo = res.get('pageNo');
       this.movieName = res.get('searchValue');
-      this.updateAPI(this.pageNo, this.movieName)
+      if (this.pageNo && this.movieName) {
+        this.updateAPI(this.pageNo, this.movieName)
+      }
+      
    })
   }
 
@@ -46,8 +42,14 @@ export class GroupcardComponent implements OnInit {
    updateAPI(pageNo:any,searchValue:any) {
     this.apicall.getData(searchValue,pageNo).subscribe((res:any) => {
       let response = res;
-      if (res && res.Response === 'True') {
+      if (res.Response == 'True') {
+        if (this.movieNotFound) {
+          this.movieNotFound=false
+        }
         this.setValue(response) 
+      }
+      else {
+        this.movieNotFound = true;
       }
     })
    }
@@ -107,42 +109,19 @@ export class GroupcardComponent implements OnInit {
 
   
   
-  filterChange1(event: any, year: any) {
-  
-  const pattern = /[0-9]/;
-  const inputChar = String.fromCharCode(event.charCode);
-  let lIsTooLong: boolean = event.target.value.length > 3
-  if (!pattern.test(inputChar) ||  lIsTooLong || event.target.value.length<0) {
-    // invalid character, prevent input
-    event.preventDefault();
-    } 
-    
-    if (event.target.value.length == 4) {
-      this.year1 = year;
+  filterChange(year1: any, year2: any) {
+    if (year1) {
+      this.year1 = year1[0] + year1[1] + year1[2] + year1[3];
+      // console.log(typeof this.year1, typeof this.cardDatas[2].Year,this.year1<=this.cardDatas[2].Year)
       this.yearCheck1 = false;
     }
-    
-  }
-  
-
-
-
-
-  filterChange2(event: any, year: any) {
-  
-  const pattern = /[0-9]/;
-  const inputChar = String.fromCharCode(event.charCode);
-  let lIsTooLong: boolean = event.target.value.length > 3
-  if (!pattern.test(inputChar) ||  lIsTooLong || event.target.value.length<0) {
-    // invalid character, prevent input
-    event.preventDefault();
-    } 
-    
-    if (event.target.value.length == 4) {
-      this.year2 = year;
+    if (year2) {
+      this.year2 = year2[0] + year2[1] + year2[2] + year2[3];
+      // console.log(typeof this.year2,typeof this.cardDatas[2].Year,this.year2>=this.cardDatas[2].Year)
       this.yearCheck2 = false;
     }
-    
-}
+  }
+
+  
 
 }

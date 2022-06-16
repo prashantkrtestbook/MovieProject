@@ -1,5 +1,5 @@
 
-$base-color: #444142;
+$base-color: #cec8ca;
 $fornt-color:rgb(44, 37, 37);
 $back-color:rgb(11, 115, 129);
 
@@ -23,21 +23,31 @@ $back-color:rgb(11, 115, 129);
     padding: 10px;
     color: $fornt-color;
     text-align: center;
-    background-color: rgb(177, 168, 168);
+    background-color: $base-color;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-.cover{
 
-    height:350px;
-    width:250px;
-    margin:10px;
+.displayDetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.bgImg {
+
+    height: 50vh;
+    width: 50vw;
+    margin: 10px;
     border-radius: 20px;
-    background-size: 250px, 350px;
+    background-size:100% 100%;
     background-repeat: no-repeat;
 }
 .column2{
 display: flex;
 flex-wrap: wrap;
+width: 75vw;
+
    
 }
 .tag{
@@ -45,11 +55,48 @@ flex-wrap: wrap;
     margin: 2px;
     padding: 5px;
     list-style: none;
-background-color:rgb(177, 168, 168);
+background-color:$base-color;
 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .column3{
     margin: 10px;
     padding: 15px;
-    background-color: rgb(177, 168, 168);
+    width: 75vw;
+    user-select: none;
+    font-weight: bolder;
+    background-color: $base-color;
+}
+
+.column2>li:hover{
+            background-color: white;
+            color: $back-color;
+           
+}
+
+.column3:hover {
+    background-color: white;
+    color: $back-color;
+
+}
+
+.hero:hover {
+    background-color: white;
+    color: $back-color;
+
+}
+
+.btn-home{
+    background-color:$base-color;
+    font-weight: bolder;
+    color: $back-color;
+    padding: 10px;
+    user-select: none;
+}
+.btn-home:hover {
+    background-color: white;
+    color: $back-color;
+
+}
+a{
+        text-decoration: none;
 }

@@ -10,7 +10,6 @@ export class ApicallService {
   constructor(private http: HttpClient) { }
   
   getData(movieName: any, pageNo?: 1) {
-  console.log(movieName,pageNo)
     let url = `https://www.omdbapi.com/?s=${movieName}&page=${pageNo}&apikey=${this.APIKEY}`;
     return this.http.get(url);
   }
@@ -18,8 +17,4 @@ export class ApicallService {
     let url = `https://www.omdbapi.com/?i=${movieId}&apikey=${this.APIKEY}`;
     return this.http.get(url);
   }
-  // getDataaccordindtopage(movieName: any,pageNo:any) {
-  //   let url = `http://www.omdbapi.com/?s=${movieName}&page=${pageNo}&apikey=${this.APIKEY}`;
-  //   return this.http.get(url);
-  // }
 }

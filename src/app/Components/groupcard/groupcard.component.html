@@ -1,28 +1,26 @@
 
 <div class="yearFilter">
    
-
-    <span #yearFilterSapn><b>Filter:</b></span>
-    <input  type="number"   placeholder="Min Year" inputmode="numeric" pattern="^\S[0-9]+$" #yearid1 max="4"
-        (keypress)="filterChange1($event,yearid1.value)"  class="filterbox">
-    
-    <input type="number" placeholder="Max Year" inputmode="numeric" pattern="^\S[0-9]+$" #yearid2 max="4"
-        (keypress)="filterChange2($event,yearid2.value)" class="filterbox">
+    <span #yearFilterSapn><b>
+        Starting:<input type="month"  class="filterbox" #year1Id>
+        Ending: <input type="month" class="filterbox" #year2Id> 
+        <button (click)="filterChange(year1Id.value,year2Id.value)" class="filterbtn">Filter</button>
+    </b></span>
 
    
 </div>
 
 
-<div  class="groupcard"  >    
+<div  class="groupcard"  *ngIf="!movieNotFound" >    
     <div class="subgroupcard" *ngFor="let cardData of cardDatas">
         <app-cards *ngIf="(year1<=cardData.Year || yearCheck1)&&(year2>=cardData.Year || yearCheck2)"   [res]="cardData" [page]="pageNo"></app-cards>
     </div>
     </div>
 
-    
-        <!-- <app-pagination *ngIf="movieName" ></app-pagination> -->
+    <div *ngIf="movieNotFound" class="movieNotFound" >
+    </div>
 
-        <div *ngIf="cardDatas">
+        <div *ngIf="cardDatas && !movieNotFound">
             <div class="container">
                 <div class="text-center">
         

@@ -1,9 +1,9 @@
 <div class="search">
-    <form (click)="clickEvent(searchbox.value)" class="form">
+    <form (click)="clickEvent(customSearch)" class="form">
 
-<input type="text" class="searchbox" #searchbox placeholder="Enter Movie Name" />
+<input name = "searchBox" type="text" class="searchbox" [(ngModel)]="customSearch"  placeholder="Enter Movie Name" />
 <a [routerLink]="['/searchquery',pageNo,movieName]">
-    <button  (click)="clickEvent(searchbox.value)" class="searchbtn">
+    <button  (click)="clickEvent(customSearch)" class="searchbtn">
         Search
     </button>
 </a>

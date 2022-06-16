@@ -16,33 +16,34 @@ export class MovieDetailsComponent implements OnInit {
   
   constructor(private apiservice:ApicallService,private _Activatedroute: ActivatedRoute) { }
   
-Actors:string="";
-Awards:string="";
-BoxOffice:string="";
-Country:string="";
+actors:string="";
+awards:string="";
+boxOffice:string="";
+country:string="";
 DVD:string="";
-Director:string="";
-Genre:string="";
-Language:string="";
-Metascore:string="";
-Plot:string="";
-Poster:string="";
-Production:string="";
-Rated:string="";
-Ratings:any=[];
-Released:string="";
-Response:string="";
-Runtime:string="";
-Title:string="";
-Type:string="";
-Website:string="";
-Writer:string="";
-Year:string="";
+director:string="";
+genre:string="";
+language:string="";
+metascore:string="";
+plot:string="";
+poster:string="";
+production:string="";
+rated:string="";
+ratings:any=[];
+released:string="";
+response:string="";
+runtime:string="";
+title:string="";
+type:string="";
+website:string="";
+writer:string="";
+year:string="";
 imdbID:string="";
 imdbRating:string="";
 imdbVotes:string="";
 
-
+localBgURL: any = "/assets/images/imageNotFound.jpeg";
+bgURL: any;
 
 
 
@@ -62,34 +63,32 @@ imdbVotes:string="";
   }
 setValue(resp: any) {
 
-this.Actors=resp.Actors;
-this.Awards=resp.Awards;
-this.BoxOffice=resp.BoxOffice;
-this.Country=resp.Country;
+this.actors=resp.Actors;
+this.awards=resp.Awards;
+this.boxOffice=resp.BoxOffice;
+this.country=resp.Country;
 this.DVD=resp.DVD;
-this.Director=resp.Director;
-this.Genre=resp.Genre;
-this.Language=resp.Language;
-this.Metascore=resp.Metascore;
-this.Plot=resp.Plot;
-this.Poster=resp.Poster;
-this.Production=resp.Production;
-this.Rated=resp.Rated;
-this.Ratings=resp.Ratings;
-this.Released=resp.Released;
-this.Response=resp.Response;
-this.Runtime=resp.Runtime;
-this.Title=resp.Title;
-this.Type=resp.Type;
-this.Website=resp.Website;
-this.Writer=resp.Writer;
-this.Year=resp.Year;
+this.director=resp.Director;
+this.genre=resp.Genre;
+this.language=resp.Language;
+this.metascore=resp.Metascore;
+this.plot=resp.Plot;
+// this.Poster=resp.Poster;
+this.production=resp.Production;
+this.rated=resp.Rated;
+this.ratings=resp.Ratings;
+this.released=resp.Released;
+this.response=resp.Response;
+this.runtime=resp.Runtime;
+this.title=resp.Title;
+this.type=resp.Type;
+this.website=resp.Website;
+this.writer=resp.Writer;
+this.year=resp.Year;
 this.imdbID=resp.imdbID;
 this.imdbRating=resp.imdbRating;
-this.imdbVotes=resp.imdbVotes;   
-}
-  getUrl(): string
-{
-  return `url(${this.Poster})`;
+this.imdbVotes = resp.imdbVotes;   
+this.bgURL = resp.Poster != "N/A" ? resp.Poster : this.localBgURL;
+  
 }
 }

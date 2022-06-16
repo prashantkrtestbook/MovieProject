@@ -1,8 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApicallService } from '../../apicall.service';
-// import {MovieDetailsComponent} from '../movie-details/movie-details.component'
-
-
 
 @Component({
   selector: 'app-cards',
@@ -15,25 +12,18 @@ export class CardsComponent implements OnInit{
 
   @Input() res: any;
   @Input() page: any;
-
-  title = 'movie Project';
+  
+  title: any ;
+  imdbId: any;
+  bgURL: any;
+  localBgURL: any = "/assets/images/imageNotFound.jpeg";
   
   ngOnInit(): void {
-    // console.log(this.res)
-  }
 
-  // @Output() getMovieDetails: EventEmitter<any> = new EventEmitter();
-  
-  
- 
-
-
-
-  // movieData: MovieDetailsComponent;
-  
-//   movieDetails(url:any) {
-//     window.open(url, "_blank");
-// }
+    this.title = this.res.Title;
+    this.imdbId = this.res.imdbID
     
-}
+    
+    this.bgURL = this.res.Poster != "N/A" ? this.res.Poster : this.localBgURL;
+  }}
   
